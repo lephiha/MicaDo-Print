@@ -13,9 +13,9 @@ please visit the official website using the link below or simply scan the attach
 
 - Optimized mobile & desktop view
 
-🔗 Live Website: https://lephiha.github.io/pelu_logo/
+🔗 Live Website: https://lephiha.github.io/MicaDo-Print/
 
 📱 Scan the QR code to access instantly from your phone: 
-![QR](./images/qr_logo.png)
+![QR](./images/MicaDo_Print.png)
 
 If you encounter any issues viewing the site, feel free to open an issue or contact me directly.
