@@ -1,0 +1,472 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #FFF7ED 0%, #FFE4D6 100%);
+    color: #4B5563;
+    overflow-x: hidden;
+    padding-top: 80px;
+}
+
+/* Navigation - giữ nguyên như album pages */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 247, 237, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(161, 98, 7, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #A16207;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4B5563;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #A16207;
+}
+
+/* Album Header */
+.album-header {
+    padding: 3rem 3rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #A16207;
+    color: #FFF7ED;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.back-button:hover {
+    background: #2563EB;
+    transform: translateX(-5px);
+}
+
+.album-title {
+    font-size: 2.5rem;
+    color: #A16207;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.album-subtitle {
+    font-size: 1.2rem;
+    color: #4B5563;
+    opacity: 0.8;
+}
+
+/* Media Section */
+.media-section {
+    padding: 2rem 3rem 5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Video Items */
+.media-item {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.media-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(59, 130, 246, 0.3);
+}
+
+.media-thumbnail {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.media-thumbnail video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.media-item:hover .media-thumbnail video {
+    transform: scale(1.05);
+}
+
+/* Video Overlay */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.media-item:hover .video-overlay {
+    background: rgba(59, 130, 246, 0.4);
+}
+
+.play-button {
+    width: 70px;
+    height: 70px;
+    background: rgba(161, 98, 7, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF7ED;
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    padding-left: 5px;
+}
+
+.media-item:hover .play-button {
+    background: #2563EB;
+    transform: scale(1.15);
+}
+
+.video-duration {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Video Modal */
+.video-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.video-modal.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content video {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.close-modal {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal:hover {
+    color: #2563EB;
+    transform: rotate(90deg);
+}
+
+/* Footer */
+footer {
+    background: rgba(161, 98, 7, 0.1);
+    padding: 3rem;
+    text-align: center;
+    color: #4B5563;
+}
+
+footer p {
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    width: 50px;
+    height: 50px;
+    background: #A16207;
+    color: #FFF7ED;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) rotate(360deg);
+    background: #2563EB;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+    
+    nav {
+        padding: 1rem 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .album-header {
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .album-title {
+        font-size: 1.8rem;
+    }
+
+    .media-section {
+        padding: 1.5rem 1rem 3rem;
+    }
+
+    .media-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .media-thumbnail {
+        height: 280px;
+    }
+    
+    .play-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+    }
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+    body {
+        padding-top: 60px;
+    }
+    
+    nav {
+        padding: 0.8rem 1rem;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    .logo-img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .nav-links {
+        gap: 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .album-header {
+        padding: 1.5rem 1rem 1rem;
+    }
+    
+    .back-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .album-title {
+        font-size: 1.5rem;
+    }
+    
+    .album-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .media-section {
+        padding: 1rem 0.8rem 2rem;
+    }
+    
+    .media-grid {
+        gap: 1rem;
+    }
+    
+    .media-thumbnail {
+        height: 250px;
+    }
+    
+    .play-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .video-duration {
+        padding: 0.25rem 0.6rem;
+        font-size: 0.8rem;
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .modal-content {
+        width: 98%;
+    }
+    
+    .close-modal {
+        top: -45px;
+        font-size: 1.8rem;
+    }
+    
+    footer {
+        padding: 2rem 1rem;
+    }
+    
+    .social-links a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Tablet Landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .media-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .album-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* Touch device optimization */
+@media (hover: none) and (pointer: coarse) {
+    .media-item:hover {
+        transform: none;
+    }
+    
+    .media-item:active {
+        transform: scale(0.98);
+    }
+    
+    .play-button {
+        background: rgba(161, 98, 7, 0.85);
+    }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.4);
+    }
+}
