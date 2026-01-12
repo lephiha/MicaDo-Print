@@ -131,132 +131,6 @@ nav {
     opacity: 0.8;
 }
 
-/* Albums Section */
-.albums-section {
-    padding: 3rem 3rem 5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.albums-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-/* Section Title */
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #A16207;
-    margin-bottom: 3rem;
-    font-weight: 600;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out 0.2s forwards;
-}
-
-/* Album Card Styles */
-.album-card {
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 25px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    text-decoration: none;
-    display: block;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.album-card:nth-child(1) { animation-delay: 0.1s; }
-.album-card:nth-child(2) { animation-delay: 0.2s; }
-.album-card:nth-child(3) { animation-delay: 0.3s; }
-.album-card:nth-child(4) { animation-delay: 0.4s; }
-.album-card:nth-child(5) { animation-delay: 0.5s; }
-.album-card:nth-child(6) { animation-delay: 0.6s; }
-
-.album-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(161, 98, 7, 0.25);
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.album-thumbnail {
-    width: 100%;
-    height: 450px;
-    background: linear-gradient(135deg, #FFE4D6 0%, #FFF7ED 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s ease;
-}
-
-.album-card:hover .album-thumbnail {
-    background: linear-gradient(135deg, #FFF7ED 0%, #FFE4D6 100%);
-}
-
-.album-thumbnail::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(161, 98, 7, 0);
-    transition: all 0.5s ease;
-}
-
-.album-card:hover .album-thumbnail::before {
-    background: rgba(161, 98, 7, 0.1);
-}
-
-.album-thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-    transition: transform 0.5s ease;
-}
-
-.album-card:hover .album-thumbnail img {
-    transform: scale(1.05);
-}
-
-.album-info {
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.9);
-    text-align: center;
-    transition: all 0.5s ease;
-}
-
-.album-card:hover .album-info {
-    background: rgba(255, 255, 255, 1);
-}
-
-.album-name {
-    font-size: 1.4rem;
-    color: #A16207;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    transition: color 0.3s ease;
-}
-
-.album-card:hover .album-name {
-    color: #2563EB;
-}
-
-.album-description {
-    font-size: 1rem;
-    color: #4B5563;
-    opacity: 0.8;
-    line-height: 1.5;
-}
-
 /* Media Section */
 .media-section {
     padding: 2rem 3rem 5rem;
@@ -382,30 +256,36 @@ nav {
     margin-left: 3px;
 }
 
-/* Product Info */
-.product-info {
-    text-align: center;
-    padding: 8px 0 4px;
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .album-header {
+        padding: 2rem 1rem 1rem;
+    }
+
+    .album-title {
+        font-size: 2rem;
+    }
+
+    .media-section {
+        padding: 2rem 1rem 3rem;
+    }
+
+    .media-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
 }
 
-.product-name {
-    font-weight: 600;
-    font-size: 15px;
-}
-
-.product-desc {
-    font-size: 13px;
-    color: #777;
-    margin: 4px 0;
-}
-
-.product-price {
-    font-size: 15px;
-    font-weight: bold;
-    color: #c47a2c;
-}
-
-/* Responsive for Albums Grid */
+/* Mobile Responsive cho Album Pages */
 @media (max-width: 768px) {
     body {
         padding-top: 70px;
@@ -446,32 +326,6 @@ nav {
         font-size: 1rem;
     }
 
-    .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
-    }
-
-    .albums-section {
-        padding: 2rem 1.5rem 3rem;
-    }
-
-    .albums-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .album-thumbnail {
-        height: 350px;
-    }
-
-    .album-name {
-        font-size: 1.2rem;
-    }
-
-    .album-description {
-        font-size: 0.9rem;
-    }
-
     .media-section {
         padding: 1.5rem 1rem 3rem;
     }
@@ -501,16 +355,11 @@ nav {
         font-size: 1.8rem;
     }
     
-    .album-thumbnail {
-        height: 300px;
-    }
-    
     .media-thumbnail {
         height: 250px;
     }
     
-    .media-grid,
-    .albums-grid {
+    .media-grid {
         gap: 1rem;
     }
     
@@ -521,7 +370,6 @@ nav {
 
 /* Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
-    .albums-grid,
     .media-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.8rem;
@@ -530,37 +378,25 @@ nav {
     .album-title {
         font-size: 2.5rem;
     }
-    
-    .album-thumbnail {
-        height: 400px;
-    }
+}
+.product-info {
+    text-align: center;
+    padding: 8px 0 4px;
 }
 
-/* Cải thiện Album Name & Description */
-.album-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    color: #A16207;
-    font-weight: 700;
-    margin-bottom: 0.8rem;
-    transition: color 0.3s ease;
-    letter-spacing: 0.5px;
+.product-name {
+    font-weight: 600;
+    font-size: 15px;
 }
 
-.album-description {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    color: #6b5d54;
-    opacity: 0.9;
-    line-height: 1.7;
-    font-weight: 400;
-    letter-spacing: 0.2px;
+.product-desc {
+    font-size: 13px;
+    color: #777;
+    margin: 4px 0;
 }
 
-.album-info {
-    padding: 1.8rem 1.5rem;
-}
-
-.album-card:hover .album-info {
-    box-shadow: inset 0 2px 8px rgba(161, 98, 7, 0.05);
+.product-price {
+    font-size: 15px;
+    font-weight: bold;
+    color: #c47a2c;
 }
