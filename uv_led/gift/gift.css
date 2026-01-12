@@ -380,8 +380,14 @@ nav {
     }
 }
 .product-info {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #A16207;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    transition: color 0.3s ease;
+    letter-spacing: 0.5px;
     text-align: center;
-    padding: 8px 0 4px;
 }
 
 .product-name {
